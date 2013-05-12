@@ -1,2 +1,40 @@
-Use this README file to introduce your application and point to useful places in the API for learning more.
-Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
+課題
+config:
+log4r => YamlConfiguratorがエラーになるためlog4rの設定を直書きしている。
+	=> yamlで設定できるようにする。
+プラグイン => 使い方覚える。
+その他 => マイグレーションなどrails・ruby関連のコマンド周辺を覚える。
+
+controller:
+データ管理 => セッションなどによるデータの流れをうまく作る。
+暗号化・トークン管理 => 暗号化処理について、どれだけやればいいのかわからん。はじめからハッシュとかあるし、何使うかべきかようわからん。
+
+だいたいつかめてきた。
+あとはrails独自の設定方法とかを勉強する必要あり。
+もう少し細かい処理を作りながら見てみる。
+
+
+model:
+ほとんど何もわかってない。
+設定方法など含めて要確認。
+
+あと、具体的にアプリを作る際にmodel部分の処理はできるだけmodel内にメソッド作ってやるようにする。
+
+view:
+これもほとんどわかってない。
+rails独特のhtml生成機能についてしっかり見ていく。
+
+わからないことだらけなのでとりあえずいじってみる。
+
+あとjs・cssなどのディレクトリ構成についても考える。
+
+ruby:
+よく使うメソッド・関数がまだまだわからないことだらけ
+とりあえずif・for関連でよく使用する条件判断のメソッドなどから覚える。
+
+あと例外処理とrubyでのtry~catchの使い方についても把握しておく
+
+テスト:
+RSpec => RSpecの基本的なテストを覚える。
+
+あとはとりあえず今のソースでできる基本的なテストをひと通りやってみる。

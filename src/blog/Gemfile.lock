@@ -98,6 +98,7 @@ GEM
       ref
     thor (0.18.1)
     tilt (1.4.0)
+    tlattr_accessors (0.0.3)
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
@@ -118,4 +119,5 @@ DEPENDENCIES
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)
   therubyracer
+  tlattr_accessors
   uglifier (>= 1.0.3)

@@ -41,3 +41,6 @@ gem 'jquery-rails'
 # add
 # log4r
 gem 'log4r'
+
+# use multi_db
+gem 'tlattr_accessors'

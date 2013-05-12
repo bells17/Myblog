@@ -1,12 +1,13 @@
 Blog::Application.routes.draw do
 
-  # 各コントローラーのルーティングを定義します。
-  resources :posts do
-    resources :comments
-  end
 
   # ベースURLによるアクセスのルーティングを設定
   root :to => 'posts#index'
+
+   # 各コントローラーのルーティングを定義します。
+  resources :posts do
+    resources :comments
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
