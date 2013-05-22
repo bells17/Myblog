@@ -45,6 +45,11 @@ gem 'log4r'
 # use multi_db
 gem 'tlattr_accessors'
 
+# use rsoec
+gem 'rspec'
+gem 'rspec-rails'
+
+# use haml
 group :development do
   gem 'haml-rails'
 end
