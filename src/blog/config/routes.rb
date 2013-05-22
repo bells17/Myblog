@@ -1,6 +1,5 @@
 Blog::Application.routes.draw do
 
-
   # ベースURLによるアクセスのルーティングを設定
   root :to => 'posts#index'
 

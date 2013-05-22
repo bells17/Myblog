@@ -14,22 +14,19 @@ development:
   reconnect: false
   database: blog_development
   pool: 5
-  host: localhost
   username: root
   password:
   socket: /var/lib/mysql/mysql.sock
 
-development_slave_database:
+development_slave_database: # that would be a slave
   adapter: mysql2
   encoding: utf8
   reconnect: false
   database: blog_development
   pool: 5
-  host: localhost
   username: root
   password:
   socket: /var/lib/mysql/mysql.sock
-
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

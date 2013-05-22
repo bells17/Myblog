@@ -6,8 +6,10 @@ class ApplicationController < ActionController::Base
 
 	@@_logger = nil
 
-	before_filter 	:__init, :__before
-	after_filter 	:__after
+	before_filter 	:__init
+	before_filter 	:__before
+
+	after_filter 		:__after
 
 	protected
 
@@ -35,29 +37,31 @@ class ApplicationController < ActionController::Base
 	# log設定を行います。
 	def __initlog(initlog = Rails.env)
 		# assign log4r's logger as rails' logger.
-#    	log4r_config = YAML.load_file(File.join(File.dirname(__FILE__),"log4r.yml"))
-#    	YamlConfigurator.decode_yaml(log4r_config['log4r_config'])
-#    	config.logger = Log4r::Logger[Rails.env]
-#    	config.logger = Log4r::Logger['publicweb']
+# 		Log4r::YamlConfigurator.load_yaml_file("#{Rails.root}/config/log4r.yml")
+# 		@@_logger = Log4r::Logger.new(initlog)
 
-	    # YamlConfiguratorがうまく使えなくなったので直書きに変更
-    	@@_logger = Log4r::Logger.new(initlog)
-	    @@_logger.outputters = Log4r::FileOutputter.new (
-    	    "publicweb",
-        	:filename   => "#{Rails.root}/log/publicweb.log",
-	        :maxsize    => 10000000,   # 10M bytes
-    	    :formatter  => Log4r::PatternFormatter.new (
-        	    :pattern        => "%d %C [%l]: %M",
-            	:date_format    => "%Y/%m/%d %H:%M:%S"
-    	    )
-	    )
-	    @@_logger.level = Log4r::DEBUG
-    	@@_logger.trace = true
-    end
+		# yamlがうまく設定できないので直書き
+		logfile="#{Rails.root}/log/publicweb.log"
+		formatter = Log4r::PatternFormatter.new(
+			:maxsize    	=> 10000000,
+		  :pattern 			=> "%d %C [%l]: %M",
+		  :date_format 	=> "%Y/%m/%d %H:%M:%S"
+		)
+		@@_logger = Log4r::Logger.new(initlog)
+		outputter = Log4r::FileOutputter.new(
+		  "file",
+		  :filename 	=> logfile,
+		  :formatter 	=> formatter
+		)
+		@@_logger.add(outputter)
+		@@_logger.level = Log4r::DEBUG
+		@@_logger.trace = true
 
-    # SQLログの出力設定を行います。
-    def __inisqllog(initlog = Logger.new(STDOUT))
-    	ActiveRecord::Base.logger = initlog
-    end
+  end
+
+  # SQLログの出力設定を行います。
+  def __inisqllog(initlog = Logger.new(STDOUT))
+  	ActiveRecord::Base.logger = initlog
+  end
 
 end

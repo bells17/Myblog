@@ -3,9 +3,13 @@ require File.expand_path('../boot', __FILE__)
 require 'rails/all'
 
 require 'rubygems'
+#log4r
 require 'log4r'
 require 'log4r/configurator'
 require 'log4r/yamlconfigurator'
+require 'log4r/outputter/fileoutputter'
+require 'log4r/outputter/outputter'
+require 'log4r/outputter/datefileoutputter'
 include Log4r
 
 if defined?(Bundler)
@@ -65,34 +69,14 @@ module Blog
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-    # add setting
+    ### add setting
+
+    # 言語ファイルを指定します。
     config.i18n.default_locale = :ja
 
-    # Custom directories with classes and modules you want to be autoloadable.
-    # config.autoload_paths += %W(#{config.root}/extras)
+    # オートロード対象のディレクトリを追加します。
     config.autoload_paths += %W(#{config.root}/lib)  # 追加
     config.autoload_paths += Dir["#{config.root}/lib/**/"] # 追加
 
-=begin
-    # assign log4r's logger as rails' logger.
-#    log4r_config = YAML.load_file(File.join(File.dirname(__FILE__),"log4r.yml"))
-#    YamlConfigurator.decode_yaml(log4r_config['log4r_config'])
-#    config.logger = Log4r::Logger[Rails.env]
-#    config.logger = Log4r::Logger['publicweb']
-
-    # YamlConfiguratorがうまく使えなくなったので直書きに変更
-    config.log4r = Log4r::Logger.new("publicweb")
-    config.log4r.outputters = Log4r::FileOutputter.new (
-      "publicweb"  ,
-      :filename   => "#{Rails.root}/log/publicweb.log"  ,
-      :maxsize    => 10000000 ,   # 10M bytes
-      :formatter  => Log4r::PatternFormatter.new (
-          :pattern        => "%d %C [%l]: %M",
-          :date_format    => "%Y/%m/%d %H:%M:%S"
-      )
-    )
-    config.log4r.level = Log4r::DEBUG
-    config.log4r.trace = true
-=end
   end
 end

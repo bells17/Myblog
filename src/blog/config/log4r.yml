@@ -10,8 +10,8 @@ log4r_config:
       level     : DEBUG
       trace     : 'true'
       outputters :
-      - publicweb
-    - name      : publicweb
+      - development_log
+    - name      : test
       level     : DEBUG
       trace     : 'true'
       outputters :
@@ -19,22 +19,24 @@ log4r_config:
 
   # define all outputters (incl. formatters)
   outputters:
-  - type: DateFileOutputter
-    name: datefile
-    dirname: "log"
-    filename: "my_app.log" # notice the file extension is needed!
-    formatter:
-      date_pattern: '%H:%M:%S'
-      pattern     : '%d %l: %m '
-      type        : PatternFormatter
-
-  # cusom
-  outputters:
   - type: FileOutputter
-    name: publicweb
-#    dirname: "/usr/local/src/public/test/ruby/blog/log"
-    filename: "log/publicweb.log" # notice the file extension is needed!
+    name: development_log
+    filename: 'log/development.log'
     formatter:
-      date_pattern: "%Y/%m/%d %H:%M:%S"
-      pattern     : "%d %C [%l]: %M"
+      date_pattern: '%Y/%m/%d %H:%M:%S'
+      pattern     : '%d [%l]: %M'
+      type        : PatternFormatter
+  - type: FileOutputter
+    name: test_log
+    filename: 'log/test.log'
+    formatter:
+      date_pattern: '%Y/%m/%d %H:%M:%S'
+      pattern     : '%d [%l]: %M'
+      type        : PatternFormatter
+  - type: FileOutputter
+    name: production_log
+    filename: 'log/production.log'
+    formatter:
+      date_pattern: '%Y/%m/%d %H:%M:%S'
+      pattern     : '%d [%l]: %M'
       type        : PatternFormatter
