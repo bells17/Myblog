@@ -44,3 +44,11 @@ gem 'log4r'
 
 # use multi_db
 gem 'tlattr_accessors'
+
+group :development do
+  gem 'haml-rails'
+end
+
+group :development do
+  gem 'erb2haml'
+end

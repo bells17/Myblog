@@ -78,5 +78,13 @@ module Blog
     config.autoload_paths += %W(#{config.root}/lib)  # 追加
     config.autoload_paths += Dir["#{config.root}/lib/**/"] # 追加
 
+    # generatorの設定
+    config.generators do |g|
+        g.orm :active_record
+        g.template_engine :haml
+        # scaffoldをgenerateするとDraperが自動で生成されます。
+        # モデルがないとエラーが発生する可能性があるので注意してください
+    end
+
   end
 end
